@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Exports;
 
+use App\Models\Track;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Date;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -22,22 +22,19 @@ class TrackExport implements FromCollection, ShouldAutoSize, WithHeadings, WithM
 
     public function collection()
     {
-        return $this->tracks
-            ->sortBy(fn ($track) => "{$track['date']} {$track['time']}");
+        return $this->tracks->sortBy('played_at');
     }
 
     /**
      * @var array
      */
-    public function map($track): array
+    public function map(Track $track): array
     {
-        $date = Date::parse("{$track['date']}T{$track['time']}");
-
         return [
-            $date->format('d-m'),
-            $date->format('H:i'),
-            $track['artist'],
-            $track['title'],
+            $track->played_at->format('d-m'),
+            $track->played_at->format('H:i'),
+            $track->artist,
+            $track->title,
         ];
     }
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Models\Track;
 use Carbon\CarbonInterface;
 use DOMDocument;
 use DOMElement;
@@ -112,12 +113,11 @@ class DetermineTracks extends SeriousRequestCommand
                     continue;
                 }
 
-                $tracks[] = [
-                    'time' => $trackDate->format('H:i'),
-                    'date' => $trackDate->format('Y-m-d'),
-                    'title' => $trackTitle,
-                    'artist' => $trackArist,
-                ];
+                $tracks[] = Track::findByPlayedAt(
+                    $trackDate,
+                    $trackArist,
+                    $trackTitle,
+                );
             }
         }
 
