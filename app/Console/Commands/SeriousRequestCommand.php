@@ -17,7 +17,7 @@ abstract class SeriousRequestCommand extends Command
 {
     protected const START_DATE = '2021-12-18T12:00';
 
-    protected const END_DATE = '2021-12-24T23:59';
+    protected const END_DATE = '2021-12-24T17:00';
 
     protected const BASE_URL = 'https://www.npo3fm.nl/';
 

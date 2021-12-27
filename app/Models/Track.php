@@ -13,6 +13,20 @@ class Track extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'played_at' => 'datetime',
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'played_at',
         'artist',
@@ -20,8 +34,15 @@ class Track extends Model
         'cover',
     ];
 
-    protected $casts = [
-        'played_at' => 'datetime',
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
     ];
 
     public static function booted(): void

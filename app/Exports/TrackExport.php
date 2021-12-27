@@ -26,9 +26,10 @@ class TrackExport implements FromCollection, ShouldAutoSize, WithHeadings, WithM
     }
 
     /**
+     * @param Track $track
      * @var array
      */
-    public function map(Track $track): array
+    public function map($track): array
     {
         return [
             $track->played_at->format('d-m'),

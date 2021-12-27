@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Exports\TrackExport;
+use App\Models\Track;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,7 +18,7 @@ class CreateSheet extends SeriousRequestCommand
      *
      * @var string
      */
-    protected $signature = '3fm:report';
+    protected $signature = 'app:report';
 
     /**
      * Execute the console command.
@@ -28,7 +28,7 @@ class CreateSheet extends SeriousRequestCommand
         $startDate = Date::parse(self::START_DATE)->toImmutable();
         $endDate = Date::parse(self::END_DATE)->toImmutable();
 
-        $tracks = Cache::get(self::CACHE_TRACKS, []);
+        $tracks = Track::all();
 
         if (empty($tracks)) {
             $this->error('No tracks found.');

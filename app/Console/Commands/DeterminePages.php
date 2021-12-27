@@ -20,7 +20,7 @@ class DeterminePages extends SeriousRequestCommand
      *
      * @var string
      */
-    protected $signature = '3fm:determine-pages';
+    protected $signature = 'app:determine-pages';
 
     /**
      * Execute the console command.
@@ -44,10 +44,10 @@ class DeterminePages extends SeriousRequestCommand
                 'lastPage' => $minMax[1] ?? null,
             ];
 
-            if ($minMax) {
-                $this->line("{$currentDate->isoFormat('DD MMMM')}: <info>{$minMax[0]}</>  → <info>{$minMax[1]}</>");
+            if ($minMax && preg_match('/page=(\d+)/', $minMax[1], $matches)) {
+                $this->line("{$currentDate->isoFormat('DD MMMM')} has <info>{$matches[1]} page(s)</>");
             } else {
-                $this->line("{$currentDate->isoFormat('DD MMMM')}: <comment>no pages</comment>");
+                $this->line("{$currentDate->isoFormat('DD MMMM')} has <comment>no pages</comment>");
             }
         } while (($currentDate = $currentDate->addDay())->lte($endDate));
 

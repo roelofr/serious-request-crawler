@@ -24,7 +24,7 @@ class DetermineTracks extends SeriousRequestCommand
      *
      * @var string
      */
-    protected $signature = '3fm:determine-tracks';
+    protected $signature = 'app:download-tracks';
 
     /**
      * Execute the console command.
