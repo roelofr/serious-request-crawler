@@ -15,12 +15,13 @@ This software is licensed under the [GNU Affero General Public License](./LICENS
 This application requires PHP 8.0+ with curl and dom, composer and sqlite or mysql drivers.
 
 1. `cp .env.example .env`
-1. `composer install`
-1. `php artisan key:generate`
-1. `php artisan migrate --seed`
+2. `touch database/database.sqlite`
+3. `composer install`
+4. `php artisan key:generate`
+5. `php artisan migrate --seed`
 
 ## Running a full export
 
 1. `php artisan app:determine-pages` to determine the min and max page numbers.
-1. `php artisan app:download-tracks` to download all pages and create Track models.
-1. `php artisan app:report` to create the ODS file.
+2. `php artisan app:download-tracks` to download all pages and create Track models.
+3. `php artisan app:report` to create the ODS file.
