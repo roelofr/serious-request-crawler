@@ -27,6 +27,13 @@ class DetermineTracks extends SeriousRequestCommand
     protected $signature = 'app:download-tracks';
 
     /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Crawl the pages from app:determine-pages and create Track models';
+
+    /**
      * Execute the console command.
      */
     public function handle(): int

@@ -23,6 +23,13 @@ class DeterminePages extends SeriousRequestCommand
     protected $signature = 'app:determine-pages';
 
     /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Determine the required pages we need to download';
+
+    /**
      * Execute the console command.
      */
     public function handle(): int

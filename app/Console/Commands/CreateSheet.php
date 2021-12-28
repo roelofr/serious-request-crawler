@@ -21,6 +21,13 @@ class CreateSheet extends SeriousRequestCommand
     protected $signature = 'app:report';
 
     /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Create a report of all tracks in the database, as .ods file';
+
+    /**
      * Execute the console command.
      */
     public function handle(): int
